@@ -65,6 +65,8 @@ int main(int argc, char** argv)
 }
 ```
 ## Code of Publisher Explained
+Now we'll break down the code piece by piece.
+
 Header for including point_cloud_transport:
 ```cpp
 #include <point_cloud_transport/point_cloud_transport.h>
@@ -148,6 +150,8 @@ int main(int argc, char **argv)
 }
 ```
 ## Code of Subscriber Explained
+Now we'll break down the code piece by piece.
+
 Header for including point_cloud_transport:
 ```cpp
 #include <point_cloud_transport/point_cloud_transport.h>
