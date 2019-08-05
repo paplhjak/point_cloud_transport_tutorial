@@ -290,7 +290,16 @@ If we check the node graph again:
 $ rqt_graph
 ~~~~~
 
+![Graph2](https://github.com/paplhjak/point_cloud_transport_tutorial/blob/master/readme_images/rosgraph2.png)
+
 We can see, that draco_listener is listening to a separate topic carrying compressed messages.
+
+Note that if you just want the draco messages, you can change the parameter globally in-line: 
+
+~~~~~ bash
+$ rosrun point_cloud_transport_tutorial subscriber_test _point_cloud_transport:=draco
+~~~~~
+
 # Managing Plugins
 
 ## Implementing Custom Plugins
