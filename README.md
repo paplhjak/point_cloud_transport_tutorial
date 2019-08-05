@@ -323,7 +323,5 @@ This should display 8.
 
 
 
-# Managing Plugins
-TODO
-## Implementing Custom Plugins
-TODO
+# Implementing Custom Plugins
+
