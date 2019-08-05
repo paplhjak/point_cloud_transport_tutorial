@@ -12,8 +12,8 @@ _**Contents**_
     * [Code Explained](#code-of-subscriber-explained)
     * [Example of Running the Subscriber](#example-of-running-the-subscriber)
   * [Using Publishers And Subscribers With Plugins](#using-publishers-and-subscribers-with-plugins)
-    * []()
-    * []()
+    * [Running the Publisher and Subsriber](#Running-the-Publisher-and-Subsriber)
+    * [Changing the Transport Used](#Changing-the-Transport-Used)
   * [Managing Plugins](#managing-plugins)
     * [Implementing Custom Plugins](#implementing-custom-plugins)
 
