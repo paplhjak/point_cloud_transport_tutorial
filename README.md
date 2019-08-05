@@ -231,7 +231,7 @@ To display the ROS computation graph, enter command:
 $ rqt_graph
 ~~~~~
 You should see a graph similar to this:
-
+![Graph1](https://github.com/paplhjak/point_cloud_transport_tutorial/blob/master/readme_images/rosgraph1.png)
 
 ## Changing the Transport Used
 Currently our nodes are communicating raw sensor_msgs/PointCloud2 messages, so we are not gaining anything over using basic ros::Publisher and ros::Subscriber. We can change that by introducing a new transport. 
