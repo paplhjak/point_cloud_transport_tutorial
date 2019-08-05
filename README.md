@@ -301,5 +301,6 @@ $ rosrun point_cloud_transport_tutorial subscriber_test _point_cloud_transport:=
 ~~~~~
 
 # Managing Plugins
-
+TODO
 ## Implementing Custom Plugins
+TODO
