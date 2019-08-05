@@ -15,8 +15,7 @@ _**Contents**_
     * [Running the Publisher and Subsriber](#Running-the-Publisher-and-Subsriber)
     * [Changing the Transport Used](#Changing-the-Transport-Used)
     * [Changing Transport Behavior](#Changing-Transport-Behavior)
-  * [Managing Plugins](#managing-plugins)
-    * [Implementing Custom Plugins](#implementing-custom-plugins)
+  * [Implementing Custom Plugins](#implementing-custom-plugins)
 
 # Writing a Simple Publisher
 In this section, we'll see how to create a publisher node, which opens a .bag file and publishes PointCloud2 messages from it.
