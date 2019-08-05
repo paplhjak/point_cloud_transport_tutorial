@@ -227,10 +227,12 @@ Subscribed topics:
  * /pct/point_cloud [sensor_msgs/PointCloud2] 1 subscriber
 ~~~~~
 To display the ROS computation graph, enter command:
+
 ~~~~~ bash
 $ rqt_graph
 ~~~~~
 You should see a graph similar to this:
+
 ![Graph1](https://github.com/paplhjak/point_cloud_transport_tutorial/blob/master/readme_images/rosgraph1.png)
 
 ## Changing the Transport Used
@@ -269,7 +271,26 @@ Details:
  - Subscriber: 
             This is the default pass-through subscriber for topics of type sensor_msgs/PointCloud2.
 ~~~~~
+Shut down your publisher node and restart it. If you list the published topics again and have draco_point_cloud_transport installed, you should see a new one:
 
+~~~~~ bash
+ * /pct/point_cloud/draco [draco_point_cloud_transport/CompressedPointCloud2] 1 publisher
+~~~~~
+
+Now let's start up a new subscriber, this one using draco transport. The key is that point_cloud_transport subscribers check the parameter ~point_cloud_transport for the name of a transport to use in place of "raw". Let's set this parameter and start a subscriber node with name "draco_listener":
+
+~~~~~ bash
+$ rosparam set /draco_listener/point_cloud_transport draco
+$ rosrun point_cloud_transport_tutorial subscriber_test __name:=draco_listener
+~~~~~
+
+If we check the node graph again:
+
+~~~~~ bash
+$ rqt_graph
+~~~~~
+
+We can see, that draco_listener is listening to a separate topic carrying compressed messages.
 # Managing Plugins
 
 ## Implementing Custom Plugins
