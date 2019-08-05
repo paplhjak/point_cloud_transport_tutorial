@@ -121,6 +121,7 @@ $ catkin_make_isolated
 $ source devel_isolated/setup.bash
 $ rosrun point_cloud_transport_tutorial publisher_test /path/to/my_bag.bag
 ~~~~~
+Of course, roscore/master must also be running.
 
 # Writing a Simple Subscriber
 In this section, we'll see how to create a subscriber node, which receives PointCloud2 messages and prints the number of points in them.
@@ -185,7 +186,42 @@ $ catkin_make_isolated
 $ source devel_isolated/setup.bash
 $ rosrun point_cloud_transport_tutorial subscriber_test
 ~~~~~
+Of course, roscore/master must also be running.
+
 # Using Publishers And Subsribers With Plugins
+In this section, we'll first make sure that the nodes are running properly. Later on, we'll change the transport to use Draco compressed format.
+## Running the Publisher and Subsriber
+Make sure that roscore/master is up and running:
+~~~~~ bash
+$ roscore
+~~~~~
+Now we can run the Publisher/Subsriber nodes. To run both start two terminal tabs and enter commands:
+~~~~~ bash
+$ source devel_isolated/setup.bash
+$ rosrun point_cloud_transport_tutorial subscriber_test
+~~~~~
+And in the second tab:
+~~~~~ bash
+$ source devel_isolated/setup.bash
+$ rosrun point_cloud_transport_tutorial publisher_test /path/to/my_bag.bag
+~~~~~
+If both nodes are running properly, you should see the subscriber node start printing information about the point cloud.
+
+To list the topics, which are being published and subscribed to, enter command:
+~~~~~ bash
+$ rostopic list -v
+~~~~~
+The output should look similar to this:
+~~~~~ bash
+Published topics:
+ * /rosout [rosgraph_msgs/Log] 1 publisher
+ * /pct/point_cloud [sensor_msgs/PointCloud2] 1 publisher
+ * /rosout_agg [rosgraph_msgs/Log] 1 publisher
+
+Subscribed topics:
+ * /rosout [rosgraph_msgs/Log] 1 subscriber
+ * /pct/point_cloud [sensor_msgs/PointCloud2] 1 subscriber
+~~~~~
 
 # Managing Plugins
 
