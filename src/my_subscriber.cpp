@@ -9,7 +9,7 @@ void Callback(const sensor_msgs::PointCloud2ConstPtr& msg)
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "point_cloud_subscriber", ros::init_options::AnonymousName);
+    ros::init(argc, argv, "point_cloud_subscriber");
     ros::NodeHandle nh;
 
     point_cloud_transport::PointCloudTransport pct(nh);
