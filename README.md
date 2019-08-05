@@ -76,7 +76,7 @@ Headers for opening .bag file with sensor_msgs::PointCloud2 messages:
 #include <rosbag/bag.h>
 #include <rosbag/view.h>
 ```
-Initialize ROS node:
+Initializing the ROS node:
 ```cpp
 ros::init(argc, argv, "point_cloud_publisher");
 ros::NodeHandle nh;
@@ -164,7 +164,7 @@ void Callback(const sensor_msgs::PointCloud2ConstPtr& msg)
 }
 ```
 
-Initialize ROS node:
+Initializes the ROS node:
 ```cpp
 ros::init(argc, argv, "point_cloud_subscriber", ros::init_options::AnonymousName);
 ros::NodeHandle nh;
