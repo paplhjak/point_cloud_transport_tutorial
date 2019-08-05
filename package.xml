@@ -1,10 +1,10 @@
 <package>
     <name>point_cloud_transport_tutorial</name>
-    <version>0.0.1</version>
-    <description> placeholder </description>
-    <author> placeholder </author>
+    <version>0.1.0</version>
+    <description> Tutorial for point_cloud_transport. </description>
+    <author> Jakub Paplham </author>
     <maintainer email="paplhjak@fel.cvut.cz">Jakub Paplham</maintainer>
-    <license> placeholder </license>
+    <license> BSD </license>
 
     <build_depend>point_cloud_transport</build_depend>
     <build_depend>sensor_msgs</build_depend>
