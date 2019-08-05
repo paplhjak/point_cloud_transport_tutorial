@@ -12,7 +12,8 @@ _**Contents**_
     * [Code Explained](#code-of-subscriber-explained)
     * [Example of Running the Subscriber](#example-of-running-the-subscriber)
   * [Using Publishers And Subscribers With Plugins](#using-publishers-and-subscribers-with-plugins)
-  
+    * []()
+    * []()
   * [Managing Plugins](#managing-plugins)
     * [Implementing Custom Plugins](#implementing-custom-plugins)
 
@@ -126,7 +127,7 @@ Of course, roscore/master must also be running.
 # Writing a Simple Subscriber
 In this section, we'll see how to create a subscriber node, which receives PointCloud2 messages and prints the number of points in them.
 
-## Code of the Subsriber
+## Code of the Subscriber
 Take a look at my_subscriber.cpp:
 ```cpp
 #include <ros/ros.h>
@@ -205,7 +206,10 @@ And in the second tab:
 $ source devel_isolated/setup.bash
 $ rosrun point_cloud_transport_tutorial publisher_test /path/to/my_bag.bag
 ~~~~~
-If both nodes are running properly, you should see the subscriber node start printing information about the point cloud.
+If both nodes are running properly, you should see the subscriber node start printing out messages similar to:
+~~~~~ bash
+Message received, number of points is: 63744
+~~~~~
 
 To list the topics, which are being published and subscribed to, enter command:
 ~~~~~ bash
@@ -222,6 +226,11 @@ Subscribed topics:
  * /rosout [rosgraph_msgs/Log] 1 subscriber
  * /pct/point_cloud [sensor_msgs/PointCloud2] 1 subscriber
 ~~~~~
+
+## Changing the Transport Used
+Currently our nodes are communicating raw sensor_msgs/PointCloud2 messages, so we are not gaining anything over using basic ros::Publisher and ros::Subscriber. We can change that by introducing a new transport. 
+
+The [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) package provides plugins for the "draco" transport, which sends point clouds over the wire encoded through kd-tree compression. Notice that [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) is not a dependency of your package; [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport) automatically discovers all transport plugins built in your ROS system. 
 
 # Managing Plugins
 
