@@ -324,4 +324,4 @@ This should display 8.
 
 
 # Implementing Custom Plugins
-
+The process of implementing your own plugins is described in a separate [repository](https://github.com/paplhjak/templateplugin_point_cloud_transport).
