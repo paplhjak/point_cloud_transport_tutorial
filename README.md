@@ -230,7 +230,39 @@ Subscribed topics:
 ## Changing the Transport Used
 Currently our nodes are communicating raw sensor_msgs/PointCloud2 messages, so we are not gaining anything over using basic ros::Publisher and ros::Subscriber. We can change that by introducing a new transport. 
 
-The [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) package provides plugins for the "draco" transport, which sends point clouds over the wire encoded through kd-tree compression. Notice that [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) is not a dependency of your package; [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport) automatically discovers all transport plugins built in your ROS system. 
+The [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) package provides plugin for   [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport), which sends point clouds over the wire encoded through kd-tree compression. Notice that draco_point_cloud_transport is not a dependency of your package; point_cloud_transport automatically discovers all transport plugins built in your ROS system.
+
+Assuming you have followed point_cloud_transport [installation](https://github.com/paplhjak/point_cloud_transport#installation), you should already have draco_point_cloud_transport built.
+
+To check which plugins are built on your machine, enter command:
+~~~~~ bash
+rosrun point_cloud_transport list_transports
+~~~~~
+You should see output similar to:
+~~~~~ bash
+Declared transports:
+point_cloud_transport/draco
+point_cloud_transport/raw
+
+Details:
+----------
+"point_cloud_transport/draco"
+ - Provided by package: draco_point_cloud_transport
+ - Publisher: 
+      This plugin publishes a CompressedPointCloud2 using either KD tree or sequential compression.
+    
+ - Subscriber: 
+      This plugin decompresses a CompressedPointCloud2 topic.
+    
+----------
+"point_cloud_transport/raw"
+ - Provided by package: point_cloud_transport
+ - Publisher: 
+            This is the default publisher. It publishes the PointCloud2 as-is on the base topic.
+        
+ - Subscriber: 
+            This is the default pass-through subscriber for topics of type sensor_msgs/PointCloud2.
+~~~~~
 
 # Managing Plugins
 
