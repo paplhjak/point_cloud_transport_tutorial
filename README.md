@@ -226,6 +226,12 @@ Subscribed topics:
  * /rosout [rosgraph_msgs/Log] 1 subscriber
  * /pct/point_cloud [sensor_msgs/PointCloud2] 1 subscriber
 ~~~~~
+To display the ROS computation graph, enter command:
+~~~~~ bash
+$ rqt_graph
+~~~~~
+You should see a graph similar to this:
+
 
 ## Changing the Transport Used
 Currently our nodes are communicating raw sensor_msgs/PointCloud2 messages, so we are not gaining anything over using basic ros::Publisher and ros::Subscriber. We can change that by introducing a new transport. 
@@ -236,7 +242,7 @@ Assuming you have followed point_cloud_transport [installation](https://github.c
 
 To check which plugins are built on your machine, enter command:
 ~~~~~ bash
-rosrun point_cloud_transport list_transports
+$ rosrun point_cloud_transport list_transports
 ~~~~~
 You should see output similar to:
 ~~~~~ bash
@@ -249,7 +255,7 @@ Details:
 "point_cloud_transport/draco"
  - Provided by package: draco_point_cloud_transport
  - Publisher: 
-      This plugin publishes a CompressedPointCloud2 using either KD tree or sequential compression.
+      This plugin publishes a CompressedPointCloud2 using KD tree compression.
     
  - Subscriber: 
       This plugin decompresses a CompressedPointCloud2 topic.
