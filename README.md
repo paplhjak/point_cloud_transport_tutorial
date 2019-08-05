@@ -11,7 +11,7 @@ _**Contents**_
     * [Code of the Subscriber](#code-of-the-subscriber)
     * [Code Explained](#code-of-subscriber-explained)
     * [Example of Running the Subscriber](#example-of-running-the-subscriber)
-  * [Using Publishers And Subsribers With Plugins](#using-publishers-and-subscribers-with-plugins)
+  * [Using Publishers And Subscribers With Plugins](#using-publishers-and-subscribers-with-plugins)
   
   * [Managing Plugins](#managing-plugins)
     * [Implementing Custom Plugins](#implementing-custom-plugins)
@@ -188,7 +188,7 @@ $ rosrun point_cloud_transport_tutorial subscriber_test
 ~~~~~
 Of course, roscore/master must also be running.
 
-# Using Publishers And Subsribers With Plugins
+# Using Publishers And Subscribers With Plugins
 In this section, we'll first make sure that the nodes are running properly. Later on, we'll change the transport to use Draco compressed format.
 ## Running the Publisher and Subsriber
 Make sure that roscore/master is up and running:
