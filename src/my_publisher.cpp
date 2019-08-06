@@ -10,7 +10,7 @@ int main(int argc, char** argv)
     ros::NodeHandle nh;
 
     point_cloud_transport::PointCloudTransport pct(nh);
-    point_cloud_transport::Publisher pub = pct.advertise("pct/point_cloud", 10);
+    point_cloud_transport::Publisher pub = pct.advertise("pct/point_cloud", 100);
 
     rosbag::Bag bag;
     bag.open(argv[1], rosbag::bagmode::Read);
