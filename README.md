@@ -12,10 +12,10 @@ _**Contents**_
     * [Code Explained](#code-of-subscriber-explained)
     * [Example of Running the Subscriber](#example-of-running-the-subscriber)
   * [Using Publishers And Subscribers With Plugins](#using-publishers-and-subscribers-with-plugins)
-    * []()
-    * []()
-  * [Managing Plugins](#managing-plugins)
-    * [Implementing Custom Plugins](#implementing-custom-plugins)
+    * [Running the Publisher and Subsriber](#Running-the-Publisher-and-Subsriber)
+    * [Changing the Transport Used](#Changing-the-Transport-Used)
+    * [Changing Transport Behavior](#Changing-Transport-Behavior)
+  * [Implementing Custom Plugins](#implementing-custom-plugins)
 
 # Writing a Simple Publisher
 In this section, we'll see how to create a publisher node, which opens a .bag file and publishes PointCloud2 messages from it.
@@ -290,7 +290,37 @@ If we check the node graph again:
 $ rqt_graph
 ~~~~~
 
-We can see, that draco_listener is listening to a separate topic carrying compressed messages.
-# Managing Plugins
+![Graph2](https://github.com/paplhjak/point_cloud_transport_tutorial/blob/master/readme_images/rosgraph2.png)
 
-## Implementing Custom Plugins
+We can see, that draco_listener is listening to a separate topic carrying compressed messages.
+
+Note that if you just want the draco messages, you can change the parameter globally in-line: 
+
+~~~~~ bash
+$ rosrun point_cloud_transport_tutorial subscriber_test _point_cloud_transport:=draco
+~~~~~
+
+## Changing Transport Behavior
+For a particular transport, we may want to tweak settings such as compression level and speed, quantization of particular attributes of point cloud, etc. Transport plugins can expose such settings through rqt_reconfigure. For example, /point_cloud_transport/draco/ allows you to change multiple parameters of the compression on the fly.
+
+For now let's adjust the position quantization. By default, "draco" transport uses quantization of 14 bits, allowing 16384 distinquishable positions in each axis; let's change it to 8 bits (256 positions):
+
+~~~~~ bash
+$ rosrun rqt_reconfigure rqt_reconfigure
+~~~~~
+
+Now pick /pct/point_cloud/draco in the drop-down menu and move the quantization_POSITION slider down to 8. If you visualize the messages, such as in RVIZ, you should be able to see the level of detail of the point cloud drop.
+
+Dynamic Reconfigure has updated the dynamically reconfigurable parameter /pct/point_cloud/draco/quantization_POSITION. You can verify this by running: 
+
+~~~~~ bash
+rosparam get /pct/point_cloud/draco/quantization_POSITION
+~~~~~
+
+This should display 8.
+
+
+
+
+# Implementing Custom Plugins
+The process of implementing your own plugins is described in a separate [repository](https://github.com/paplhjak/templateplugin_point_cloud_transport).
