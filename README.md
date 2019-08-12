@@ -12,15 +12,15 @@ _**Contents**_
     * [Code Explained](#code-of-subscriber-explained)
     * [Example of Running the Subscriber](#example-of-running-the-subscriber)
   * [Using Publishers And Subscribers With Plugins](#using-publishers-and-subscribers-with-plugins)
-    * [Running the Publisher and Subsriber](#Running-the-Publisher-and-Subsriber)
-    * [Changing the Transport Used](#Changing-the-Transport-Used)
-    * [Changing Transport Behavior](#Changing-Transport-Behavior)
+    * [Running the Publisher and Subsriber](#running-the-publisher-and-subsriber)
+    * [Changing the Transport Used](#changing-the-transport-used)
+    * [Changing Transport Behavior](#changing-transport-behavior)
   * [Implementing Custom Plugins](#implementing-custom-plugins)
 
 # Writing a Simple Publisher
 In this section, we'll see how to create a publisher node, which opens a .bag file and publishes PointCloud2 messages from it.
 
-This tutorial assumes, that you have created your workspace during point_cloud_transport [installation](https://github.com/paplhjak/point_cloud_transport#installation). 
+This tutorial assumes, that you have created your workspace during [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport) [installation](https://github.com/paplhjak/point_cloud_transport#installation). 
 
 Before we start, change to the directory and clone this repository:
 ~~~~~ bash
@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 ## Code of Publisher Explained
 Now we'll break down the code piece by piece.
 
-Header for including point_cloud_transport:
+Header for including [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport):
 ```cpp
 #include <point_cloud_transport/point_cloud_transport.h>
 ```
@@ -154,7 +154,7 @@ int main(int argc, char **argv)
 ## Code of Subscriber Explained
 Now we'll break down the code piece by piece.
 
-Header for including point_cloud_transport:
+Header for including [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport):
 ```cpp
 #include <point_cloud_transport/point_cloud_transport.h>
 ```
@@ -238,9 +238,9 @@ You should see a graph similar to this:
 ## Changing the Transport Used
 Currently our nodes are communicating raw sensor_msgs/PointCloud2 messages, so we are not gaining anything over using basic ros::Publisher and ros::Subscriber. We can change that by introducing a new transport. 
 
-The [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) package provides plugin for   [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport), which sends point clouds over the wire encoded through kd-tree compression. Notice that draco_point_cloud_transport is not a dependency of your package; point_cloud_transport automatically discovers all transport plugins built in your ROS system.
+The [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) package provides plugin for   [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport), which sends point clouds over the wire encoded through kd-tree or sequantial compression. Notice that draco_point_cloud_transport is not a dependency of your package; point_cloud_transport automatically discovers all transport plugins built in your ROS system.
 
-Assuming you have followed point_cloud_transport [installation](https://github.com/paplhjak/point_cloud_transport#installation), you should already have draco_point_cloud_transport built.
+Assuming you have followed [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport) [installation](https://github.com/paplhjak/point_cloud_transport#installation), you should already have [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) built.
 
 To check which plugins are built on your machine, enter command:
 ~~~~~ bash
@@ -271,13 +271,13 @@ Details:
  - Subscriber: 
             This is the default pass-through subscriber for topics of type sensor_msgs/PointCloud2.
 ~~~~~
-Shut down your publisher node and restart it. If you list the published topics again and have draco_point_cloud_transport installed, you should see a new one:
+Shut down your publisher node and restart it. If you list the published topics again and have [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) installed, you should see a new one:
 
 ~~~~~ bash
  * /pct/point_cloud/draco [draco_point_cloud_transport/CompressedPointCloud2] 1 publisher
 ~~~~~
 
-Now let's start up a new subscriber, this one using draco transport. The key is that point_cloud_transport subscribers check the parameter ~point_cloud_transport for the name of a transport to use in place of "raw". Let's set this parameter and start a subscriber node with name "draco_listener":
+Now let's start up a new subscriber, this one using draco transport. The key is that [<point_cloud_transport>](https://github.com/paplhjak/point_cloud_transport) subscribers check the parameter ~point_cloud_transport for the name of a transport to use in place of "raw". Let's set this parameter and start a subscriber node with name "draco_listener":
 
 ~~~~~ bash
 $ rosparam set /draco_listener/point_cloud_transport draco
@@ -319,7 +319,7 @@ rosparam get /pct/point_cloud/draco/quantization_POSITION
 
 This should display 8.
 
-
+Full explanation of the reconfigure parameters and an example of how to use them can be found at [<draco_point_cloud_transport>](https://github.com/paplhjak/draco_point_cloud_transport) repository.
 
 
 # Implementing Custom Plugins
